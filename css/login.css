@@ -1,0 +1,44 @@
+/*------ Variables */
+
+/************Colores
+
+#03588C = Azul Oscuro
+#5E7F8C = Azul Gris
+#9CD35F = Verde Claro
+#80C242 = Verde Oscuro
+#242424 = Negro
+#F2F2F2 = Blanco
+
+*/
+:root{
+    --black: #242424;
+    --white: #F2F2F2;
+    --font-title: 'Exo 2', sans-serif;
+    --font: 'Montserrat', sans-serif;
+}
+
+html{height:100%;}
+body{
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;;
+  background: rgb(34,193,195);
+  background: linear-gradient(130deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+}
+.login-wrap{
+  position:absolute;
+  left:50%;
+  margin-left:-33px;
+  top:50%;
+  margin-top:-30px;
+}
+.login-form{
+  position:absolute;
+  top:20%;
+  left:50%;
+  margin-left:-225px;
+  width:450px;
+  visibility:visible;
+  opacity: 1;
+}
