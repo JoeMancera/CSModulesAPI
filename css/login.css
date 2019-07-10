@@ -13,18 +13,48 @@
 :root{
     --black: #242424;
     --white: #F2F2F2;
+    --azulO: #03588C;
+    --azulG: #5E7F8C;
+    --verdeC: #9CD35F;
+    --verdeO: #80C242;
     --font-title: 'Exo 2', sans-serif;
     --font: 'Montserrat', sans-serif;
+
 }
 
 html{height:100%;}
 body{
+    font-family: var(--font);
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;;
   background: rgb(34,193,195);
-  background: linear-gradient(130deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+  background: linear-gradient(130deg, var(--verdeC) 0%, var(--azulO) 100%);
+}
+button{
+    padding: 8px 30px;
+    margin: 5px;
+    background-color: var(--white);
+    border-color: var(--white);
+    border-width: 1px;
+    border-style: groove;
+}
+label{
+    padding: 5px;
+}
+.form-control{
+    display: block;
+    width: 90%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--azulG);
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 .login-wrap{
   position:absolute;
@@ -41,4 +71,24 @@ body{
   width:450px;
   visibility:visible;
   opacity: 1;
+}
+
+.card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 1.25rem;
 }
