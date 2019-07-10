@@ -43,6 +43,9 @@ button{
 label{
     padding: 5px;
 }
+figure{
+    align-content: center;
+}
 .form-control{
     display: block;
     width: 90%;
