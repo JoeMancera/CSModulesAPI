@@ -32,12 +32,15 @@
     <script type="text/javascript" src="./js/core/__OTRequest.js"></script>
     <script type="text/javascript" src="./js/core/model/_mOTConfig.js"></script>
     <script type="text/javascript">
-    function submit(){
+    async function submit(){
         const user = document.querySelector('#user');
         const pass = document.querySelector('#pass');
         console.log(user.value + " - " +pass.value);
-        let resp = _auth(user.value, pass.value);
-        console.log(resp);
+        let status = await _ping();
+        if(status){
+            let resp = await _auth(user.value, pass.value);
+            console.log(resp.ticket);
+        }        
     }
     </script>
 </body>

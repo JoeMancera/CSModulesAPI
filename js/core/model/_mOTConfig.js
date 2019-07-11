@@ -1,7 +1,8 @@
 const Confg = {
-    domain:"http://explorationlab.projectioncore.com/"
+    domain:"http://explorationlab.projectioncore.com/OTCS/cs.exe/api/"
     , url: {
-        auth: "v1/auth/"
+        auth: "v1/auth"
+        , ping: "v1/ping"
     }
     , types: { 
         folder: 0
