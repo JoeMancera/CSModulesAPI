@@ -12,7 +12,7 @@
 <body>
     <div class="card login-form" id="login-show">
         <div class="card-body">
-            <form>
+            <div>
                 <figure>
                     <img width="240" src="/images/th-logo.png" alt="Techedge">
                 </figure>
@@ -24,9 +24,21 @@
                     <label for="pass">Contraseña</label>
                     <input class="form-control" type="text" name="pass" id="pass">
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
-            </form>
+                <button type="button" onclick="submit()" class="btn btn-primary">Enviar</button>
+            </div>
         </div>
     </div>
+    <script type="text/javascript" src="./js/core/__OTCommands.js"></script>
+    <script type="text/javascript" src="./js/core/__OTRequest.js"></script>
+    <script type="text/javascript" src="./js/core/model/_mOTConfig.js"></script>
+    <script type="text/javascript">
+    function submit(){
+        const user = document.querySelector('#user');
+        const pass = document.querySelector('#pass');
+        console.log(user.value + " - " +pass.value);
+        let resp = _auth(user.value, pass.value);
+        console.log(resp);
+    }
+    </script>
 </body>
 </html>
