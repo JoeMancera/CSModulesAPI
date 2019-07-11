@@ -1,6 +1,6 @@
 class __OTConfig  {
     constructor(domain="http://explorationlab.projectioncore.com/OTCS/cs.exe/api/"){
-        this.__OTDOMAIN      = domain;
+        this.__OTDOMAIN = domain;
         this.__OTTypes =  { 
             "folder": 0
             , "shortcut": 1
