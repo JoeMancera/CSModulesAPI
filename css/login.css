@@ -44,7 +44,7 @@ label{
     padding: 5px;
 }
 figure{
-    align-content: center;
+    text-align: center;
 }
 .form-control{
     display: block;
