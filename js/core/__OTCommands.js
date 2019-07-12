@@ -1,16 +1,3 @@
-
-async function _auth(username, password){
-    let res;
-    let AuthPost = 'username='+username+'&password='+password;
-    let myHeaders = new Headers({
-        "Content-Type": "text/javascript",
-    })
-    const url = Confg.domain+Confg.url.auth;
-    let response = await __OTPostRequest(AuthPost, 'POST', url, myHeaders);
-    
-    return response;
-}
-
 async function _ping() {
     const url = Confg.domain + Confg.url.ping
     let status = false; 
@@ -31,4 +18,32 @@ async function _ping() {
         status = false
     });
     return status;
+}
+
+async function _auth(username, password){
+    let AuthPost = 'username='+username+'&password='+password;
+    let myHeaders = new Object({
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+    })
+    const url = Confg.domain + Confg.url.auth;
+    try{
+        let response = await __OTPostRequest(AuthPost, 'POST', url, myHeaders);
+        if(response.ticket){
+            return "Error al iniciar sesión: usuario y contraseña invalido"
+        } else {
+            window.sessionStorage.setItem("ot_label", response.ticket);
+            return "OK";
+        }
+    } catch (e){
+        return "Error al iniciar sesión: " + e
+    }
+}
+
+async function _userdata(){
+    let myHeaders = new Object({
+        'OTCSTICKET' : window.sessionStorage.getItem("ot_label")
+    });
+    const url = Confg.domain + Confg.url.auth;
+    let response = await __OTPostRequest(null, 'GET', url, myHeaders);
+    console.log(response);
 }
