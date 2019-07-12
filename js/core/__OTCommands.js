@@ -57,3 +57,13 @@ async function _serverinfo(){
     console.log(response);
     return response;
 }
+
+async function _getNode(idNode){
+    let myHeaders = new Object({
+        'OTCSTICKET' : window.sessionStorage.getItem("ot_label")
+    });
+    const url = Confg.domain + Confg.url.nodeInfo + idNode;
+    let response = await __OTPostRequest(null, 'GET', url, myHeaders);
+    console.log(response);
+    return response;
+}
