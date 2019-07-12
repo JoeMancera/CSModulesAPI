@@ -3,6 +3,7 @@ const Confg = {
     , url: {
         auth: "v1/auth"
         , ping: "v1/ping"
+        , sInfo: "v1/serverinfo"
     }
     , types: { 
         folder: 0

@@ -48,3 +48,12 @@ async function _userdata(){
     window.sessionStorage.setItem("ot_user_data", JSON.stringify(response.data) )
 }
 
+async function _serverinfo(){
+    let myHeaders = new Object({
+        'OTCSTICKET' : window.sessionStorage.getItem("ot_label")
+    });
+    const url = Confg.domain + Confg.url.sInfo;
+    let response = await __OTPostRequest(null, 'GET', url, myHeaders);
+    console.log(response);
+    return response;
+}

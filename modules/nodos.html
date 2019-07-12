@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Nodes | CSModules</title>
+    <link async rel="stylesheet" href="../css/site.css">
+    <title>Nodos | CSModules</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-<body>
+<body>    
+    <header class="header" style="z-index: 100;">
+        <h1>CSModules</h1>
+    </header>
+    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+        <a href="#"><span><i class="material-icons">info</i><span class="icon-text">about</span></a><br>
+        <a href="#"><i class="material-icons">spa</i><span class="icon-text"></span>services</a></span>
+    </a><br>
+    <a href="#"><i class="material-icons">monetization_on</i><span class="icon-text"></span>clients</span></a><br>
+    <a href="#"><i class="material-icons">email</i><span class="icon-text"></span>contact<span></a>
+    </div>
     
+    <div id="main">
+        <h2>Open/Collapse Sidebar on Hover</h2>
+        <p>Hover over any part of the sidebar to open the it.</p>
+        <p>To close the sidebar, move your mouse out of the sidebar.</p>
+    </div>
+    <script type="text/javascript" src="../js/modules/site.js"></script>
 </body>
 </html>

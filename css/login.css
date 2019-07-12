@@ -28,8 +28,7 @@ body{
   height: 100%;
   margin: 0;
   background-repeat: no-repeat;
-  background-attachment: fixed;;
-  background: rgb(34,193,195);
+  background-attachment: fixed;
   background: linear-gradient(130deg, var(--verdeC) 0%, var(--azulO) 100%);
 }
 button{
