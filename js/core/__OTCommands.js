@@ -28,7 +28,7 @@ async function _auth(username, password){
     const url = Confg.domain + Confg.url.auth;
     try{
         let response = await __OTPostRequest(AuthPost, 'POST', url, myHeaders);
-        if(response.ticket){
+        if(response.ticket == "401"){
             return "Error al iniciar sesión: usuario y contraseña invalido"
         } else {
             window.sessionStorage.setItem("ot_label", response.ticket);
@@ -45,5 +45,6 @@ async function _userdata(){
     });
     const url = Confg.domain + Confg.url.auth;
     let response = await __OTPostRequest(null, 'GET', url, myHeaders);
-    console.log(response);
+    window.sessionStorage.setItem("ot_user_data", JSON.stringify(response.data) )
 }
+
