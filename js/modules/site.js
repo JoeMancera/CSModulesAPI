@@ -12,3 +12,6 @@ function toggleSidebar() {
   }
 }
 
+/***colocar usuario en el header***/
+const userData = JSON.parse(window.sessionStorage.getItem('ot_user_data'));
+document.querySelector('#current-user').innerHTML = userData.display_name;

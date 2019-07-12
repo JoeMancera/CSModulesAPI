@@ -68,6 +68,10 @@ label{
   align-items: center;
 }
 
+.header span{
+  margin-right: 15px;
+}
+
 
 .sidebar {
   height: 100%;

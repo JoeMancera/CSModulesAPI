@@ -5,26 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link async rel="stylesheet" href="../css/site.css">
-    <title>Nodos | CSModules</title>
+    <title>Index | CSModules</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="shortcut icon" href="http://explorationlab.projectioncore.com/img/favicon.ico" type="image/x-icon">
 </head>
 <body>    
     <header class="header" style="z-index: 100;">
-        <h1>CSModules</h1>
+        <h1>CSModules - Nodos</h1> <span id="current-user">user</span>
     </header>
     <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
-        <a href="#"><span><i class="material-icons">info</i><span class="icon-text">about</span></a><br>
-        <a href="#"><i class="material-icons">spa</i><span class="icon-text"></span>services</a></span>
-    </a><br>
-    <a href="#"><i class="material-icons">monetization_on</i><span class="icon-text"></span>clients</span></a><br>
-    <a href="#"><i class="material-icons">email</i><span class="icon-text"></span>contact<span></a>
+        <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+            <a href="./index.html">
+                <i class="material-icons item">info</i><span class="icon-text">Info</span>
+            </a>
+            <a href="./nodos.html">
+                <i class="material-icons item">folder</i><span class="icon-text">Nodos</span>
+            </a>
+        </div>
     </div>
-    
     <div id="main">
-        <h2>Open/Collapse Sidebar on Hover</h2>
-        <p>Hover over any part of the sidebar to open the it.</p>
-        <p>To close the sidebar, move your mouse out of the sidebar.</p>
+        <h2><i class="material-icons">label</i> Nodos</h2>
+        <div class="info">
+            <section>
+                <h3>Información del Servidor</h3>
+                <div class="box">
+                    <label>Versión:</label><span id="ver-sys">Vers</span><br>
+                    <label>Url:</label><span id="url-sys"><a href="#">OT Content Server</a></span><br>
+                    <label>Lenguaje:</label><span id="lang-sys">lang</span><br>
+                    <label>Fecha Actual:</label><span id="date-sys">date</span><br>
+                </div>
+            </section>
+        </div>
     </div>
     <script type="text/javascript" src="../js/modules/site.js"></script>
+    <script type="text/javascript" src="../js/core/__OTCommands.js"></script>
+    <script type="text/javascript" src="../js/core/__OTRequest.js"></script>
+    <script type="text/javascript" src="../js/core/model/_mOTConfig.js"></script>
+    <script type="text/javascript">
+        infoServer();
+        async function infoServer(){
+            const _otcs  = await _serverinfo();
+            document.querySelector('#ver-sys').innerHTML = _otcs.server.version;
+            document.querySelector('#url-sys a').href = _otcs.server.url;
+            document.querySelector('#lang-sys').innerHTML = _otcs.server.language_code;
+            document.querySelector('#date-sys').innerHTML = _otcs.server.current_date;
+        }
+    </script>
 </body>
 </html>
