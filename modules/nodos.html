@@ -26,7 +26,12 @@
         <h2><i class="material-icons">label</i> Nodos</h2>
         <h3><span id="node-name">Nombre del nodo</span></h3>
         <div class="node-content">
-            <table id="node-children">
+            <div id="load" class="load">
+                <svg viewBox="0 0 32 32" width="32" height="32">
+                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
+                </svg>
+            </div>
+            <table id="node-children" >
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -47,12 +52,25 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        infoNode(2000);
+        let complete = infoNode(2000);
+        
+
+        $('#node-children')
+        .addClass( 'nowrap' )
+        .dataTable( {
+            processing: true,
+            responsive: true,
+            columnDefs: [
+            { targets: [-1, -3], className: 'dt-body-right' }
+            ]
+        } );
         async function infoNode(idNode){
+            document.querySelector('#load').style = "display: block;"
             let node = await _getNode(idNode);
             let infoNode =  node.results.data;
             document.querySelector('#node-name').innerHTML = infoNode.properties.name
             let children = await _getChildren(idNode);
+            emptyTableNode();
             const childs = children.data.length;
             
             for (let i = 0; i < childs; i++) {
@@ -61,6 +79,9 @@
                 let newCell0  = newRow.insertCell(0);
                 let nameNode  = document.createTextNode(children.data[i].name);
                 newCell0.appendChild(nameNode);
+                newCell0.setAttribute('onclick', `infoNode(${children.data[i].id})` );
+                newCell0.style.cursor='pointer';
+                newCell0.classList.add("item-node-list");
                 let newCell1  = newRow.insertCell(1);
                 let typeNode  = document.createTextNode(children.data[i].type_name);
                 newCell1.appendChild(typeNode);
@@ -68,18 +89,9 @@
                 let contNode  = document.createTextNode(children.data[i].size_formatted);
                 newCell2.appendChild(contNode);
                 let newCell3  = newRow.insertCell(3);
-                
             }
-
-            $('#node-children')
-            .addClass( 'nowrap' )
-            .dataTable( {
-                responsive: true,
-                columnDefs: [
-                { targets: [-1, -3], className: 'dt-body-right' }
-                ]
-            } );
-            
+            document.querySelector('#load').style = "display: none;"
+            return true;
         }
     </script>
 </body>

@@ -15,3 +15,12 @@ function toggleSidebar() {
 /***colocar usuario en el header***/
 const userData = JSON.parse(window.sessionStorage.getItem('ot_user_data'));
 document.querySelector('#current-user').innerHTML = userData.display_name;
+
+function emptyTableNode(){
+  const table = document.getElementById('node-children');
+  let cellNumber = table.rows.length-1
+  for (let i = 1; i <= cellNumber ; i++) {
+    table.deleteRow(1);    
+  }
+  
+}
