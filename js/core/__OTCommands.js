@@ -32,6 +32,7 @@ async function _auth(username, password){
             return "Error al iniciar sesión: usuario y contraseña invalido"
         } else {
             window.sessionStorage.setItem("ot_label", response.ticket);
+            _userdata();
             return "OK";
         }
     } catch (e){
@@ -62,8 +63,18 @@ async function _getNode(idNode){
     let myHeaders = new Object({
         'OTCSTICKET' : window.sessionStorage.getItem("ot_label")
     });
-    const url = Confg.domain + Confg.url.nodeInfo + idNode;
+    const url = Confg.domain + Confg.url.nodeInfo.v2 + idNode;
     let response = await __OTPostRequest(null, 'GET', url, myHeaders);
     console.log(response);
+    return response;
+}
+
+async function _getChildren(idNode){
+    let myHeaders = new Object({
+        'OTCSTICKET' : window.sessionStorage.getItem("ot_label")
+    });
+    const url = Confg.domain + Confg.url.nodeInfo.v1 + idNode + "/nodes";
+    let response = await __OTPostRequest(null, 'GET', url, myHeaders);
+    console.log(response.data);
     return response;
 }

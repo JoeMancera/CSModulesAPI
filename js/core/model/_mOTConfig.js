@@ -4,7 +4,10 @@ const Confg = {
         auth: "v1/auth"
         , ping: "v1/ping"
         , sInfo: "v1/serverinfo"
-        , nodeInfo: "v2/nodes/"
+        , nodeInfo: {
+            v2 : "v2/nodes/"
+            ,v1: "v1/nodes/"
+        }
     }
     , types: { 
         folder: 0

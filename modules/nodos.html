@@ -5,50 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link async rel="stylesheet" href="../css/site.css">
-    <title>Index | CSModules</title>
+    <title>Nodos | CSModules</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="shortcut icon" href="http://explorationlab.projectioncore.com/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 <body>    
     <header class="header" style="z-index: 100;">
         <h1>CSModules - Nodos</h1> <span id="current-user">user</span>
     </header>
     <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
-        <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
-            <a href="./index.html">
-                <i class="material-icons item">info</i><span class="icon-text">Info</span>
-            </a>
-            <a href="./nodos.html">
-                <i class="material-icons item">folder</i><span class="icon-text">Nodos</span>
-            </a>
-        </div>
+        <a href="./index.html">
+            <i class="material-icons item">info</i><span class="icon-text">Info</span>
+        </a>
+        <a href="./nodos.html">
+            <i class="material-icons item">folder_open</i><span class="icon-text">Nodos</span>
+        </a>
     </div>
     <div id="main">
         <h2><i class="material-icons">label</i> Nodos</h2>
-        <div class="info">
-            <section>
-                <h3>Información del Servidor</h3>
-                <div class="box">
-                    <label>Versión:</label><span id="ver-sys">Vers</span><br>
-                    <label>Url:</label><span id="url-sys"><a href="#">OT Content Server</a></span><br>
-                    <label>Lenguaje:</label><span id="lang-sys">lang</span><br>
-                    <label>Fecha Actual:</label><span id="date-sys">date</span><br>
-                </div>
-            </section>
+        <h3><span id="node-name">Nombre del nodo</span></h3>
+        <div class="node-content">
+            <table id="node-children">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Tipo</th>
+                        <th>Contenido</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
         </div>
     </div>
     <script type="text/javascript" src="../js/modules/site.js"></script>
     <script type="text/javascript" src="../js/core/__OTCommands.js"></script>
     <script type="text/javascript" src="../js/core/__OTRequest.js"></script>
     <script type="text/javascript" src="../js/core/model/_mOTConfig.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
-        infoServer();
-        async function infoServer(){
-            const _otcs  = await _serverinfo();
-            document.querySelector('#ver-sys').innerHTML = _otcs.server.version;
-            document.querySelector('#url-sys a').href = _otcs.server.url;
-            document.querySelector('#lang-sys').innerHTML = _otcs.server.language_code;
-            document.querySelector('#date-sys').innerHTML = _otcs.server.current_date;
+        infoNode(2000);
+        async function infoNode(idNode){
+            let node = await _getNode(idNode);
+            let infoNode =  node.results.data;
+            document.querySelector('#node-name').innerHTML = infoNode.properties.name
+            let children = await _getChildren(idNode);
+            const childs = children.data.length;
+            
+            for (let i = 0; i < childs; i++) {
+                let tableRef = document.getElementById('node-children').getElementsByTagName('tbody')[0];
+                let newRow   = tableRef.insertRow();
+                let newCell0  = newRow.insertCell(0);
+                let nameNode  = document.createTextNode(children.data[i].name);
+                newCell0.appendChild(nameNode);
+                let newCell1  = newRow.insertCell(1);
+                let typeNode  = document.createTextNode(children.data[i].type_name);
+                newCell1.appendChild(typeNode);
+                let newCell2  = newRow.insertCell(2);
+                let contNode  = document.createTextNode(children.data[i].size_formatted);
+                newCell2.appendChild(contNode);
+                let newCell3  = newRow.insertCell(3);
+                
+            }
+
+            $('#node-children')
+            .addClass( 'nowrap' )
+            .dataTable( {
+                responsive: true,
+                columnDefs: [
+                { targets: [-1, -3], className: 'dt-body-right' }
+                ]
+            } );
+            
         }
     </script>
 </body>
