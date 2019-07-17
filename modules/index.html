@@ -35,12 +35,12 @@
             </section>
         </div>
     </div>
-    <script type="text/javascript" src="../js/modules/site.js"></script>
     <script type="text/javascript" src="../js/core/__OTCommands.js"></script>
     <script type="text/javascript" src="../js/core/__OTRequest.js"></script>
     <script type="text/javascript" src="../js/core/model/_mOTConfig.js"></script>
     <script type="text/javascript">
         infoServer();
+        _userdata(); 
         async function infoServer(){
             const _otcs  = await _serverinfo();
             document.querySelector('#ver-sys').innerHTML = _otcs.server.version;
@@ -49,5 +49,6 @@
             document.querySelector('#date-sys').innerHTML = _otcs.server.current_date;
         }
     </script>
+    <script type="text/javascript" src="../js/modules/site.js"></script>
 </body>
 </html>
