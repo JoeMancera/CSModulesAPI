@@ -12,9 +12,9 @@
 </head>
 <body>    
     <header class="header" style="z-index: 100;">
-        <h1>CSModules - Nodos</h1> <span id="current-user">user</span>
+        <h1><i class="material-icons menu" onclick="toggleSidebar()">menu</i> CSModules</h1> <span id="current-user">user</span>
     </header>
-    <div id="mySidebar" class="sidebar" onmouseover="toggleSidebar()" onmouseout="toggleSidebar()">
+    <div id="mySidebar" class="sidebar">
         <a href="./index.html">
             <i class="material-icons item">info</i><span class="icon-text">Info</span>
         </a>
@@ -23,8 +23,7 @@
         </a>
     </div>
     <div id="main">
-        <h2><i class="material-icons">label</i> Nodos</h2>
-        <h3><span id="node-name">Nombre del nodo</span></h3>
+        <h2><i class="material-icons">label</i> Nodos - <small id="node-name">Nombre del nodo</small></h2>
         <div class="node-content">
             <div id="load" class="load">
                 <svg viewBox="0 0 32 32" width="32" height="32">

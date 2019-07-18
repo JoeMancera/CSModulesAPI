@@ -14,14 +14,14 @@ async function infoNode(idNode){
         let nameNode  = document.createTextNode(children.data[i].name);
         
         switch (children.data[i].type) {
-            case 0:
+            case Confg.types.folder:
                 newCell0.setAttribute('onclick', `infoNode(${children.data[i].id})` );
                 break;
-            case 1:
+            case Confg.types.shortcut:
                 newCell0.setAttribute('onclick', `infoNode(${children.data[i].original_id})` );
                 break;
-            case 144:
-                newCell0.setAttribute('onclick', `infoNode(${children.data[i].original_id})` );
+            case Confg.types.document:
+                newCell0.setAttribute('onclick', `window.open('${Confg.instance}${children.data[i].actions[0].url}', '_blank')` );
                 break;
             default:
             newCell0.setAttribute('onclick', `infoNode(${children.data[i].id})` );

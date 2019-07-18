@@ -144,6 +144,12 @@ main .sidebar {
   text-decoration: underline;
 }
 
+.menu{
+  cursor: pointer;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
 @media screen and (max-height: 450px) {
   .sidebar {
     padding-top: 15px;
