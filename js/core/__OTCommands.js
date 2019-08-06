@@ -1,6 +1,6 @@
-async function _ping() {
+async function _ping(){
     const url = Confg.domain + Confg.url.ping
-    let status = false; 
+    let status = false;
     await fetch(url)
     .then((response) => {
         if (response.ok) {
