@@ -1,6 +1,6 @@
 const Confg = {
-    instance : "http://explorationlab.projectioncore.com"
-    , domain:"http://explorationlab.projectioncore.com/OTCS/cs.exe/api/"
+    instance : "http://explorationlab.techedgegroup.co"
+    , domain:"http://explorationlab.techedgegroup.co/OTCS/cs.exe/api/"
     , url: {
         auth: "v1/auth"
         , ping: "v1/ping"
