@@ -10,6 +10,7 @@ const Confg = {
             ,v1: "v1/nodes/"
         }
     }
+    , supportPath: '/OTCS/cs.exe/img'
     , types: { 
         folder: 0
         , shortcut: 1
