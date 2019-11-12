@@ -24,6 +24,7 @@ const Confg = {
         , channel: 207
         , news: 208
         , taskmilistone: 212
-        , virtual_folder: 899 
+        , virtual_folder: 899
+        , bussines_workspace: 848 
     }
 };

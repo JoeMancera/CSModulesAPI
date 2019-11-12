@@ -46,7 +46,11 @@ async function _userdata(){
     });
     const url = Confg.domain + Confg.url.auth;
     let response = await __OTPostRequest(null, 'GET', url, myHeaders);
-    window.sessionStorage.setItem("ot_user_data", JSON.stringify(response.data) )
+    if(response.ticket != '401'){
+        window.sessionStorage.setItem("ot_user_data", JSON.stringify(response.data) )
+    } else {
+        window.location.replace("../index.html");
+    }
 }
 
 async function _serverinfo(){
