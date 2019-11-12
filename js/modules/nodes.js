@@ -15,14 +15,14 @@ async function infoNode(idNode){
         
         switch (children.data[i].type) {
             case Confg.types.folder:
-                newCell0.setAttribute('onclick', `infoNode(${children.data[i].id})` );
-                break;
+            newCell0.setAttribute('onclick', `infoNode(${children.data[i].id})` );
+            break;
             case Confg.types.shortcut:
-                newCell0.setAttribute('onclick', `infoNode(${children.data[i].original_id})` );
-                break;
+            newCell0.setAttribute('onclick', `infoNode(${children.data[i].original_id})` );
+            break;
             case Confg.types.document:
-                newCell0.setAttribute('onclick', `window.open('${Confg.instance}${children.data[i].actions[0].url}', '_blank')` );
-                break;
+            newCell0.setAttribute('onclick', `window.open('${Confg.instance}${children.data[i].actions[0].url}', '_blank')` );
+            break;
             default:
             newCell0.setAttribute('onclick', `infoNode(${children.data[i].id})` );
             break;

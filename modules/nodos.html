@@ -23,26 +23,7 @@
         </a>
     </div>
     <div id="main">
-        <h2><i class="material-icons">label</i> Nodos - <small id="node-name">Nombre del nodo</small></h2>
-        <div class="node-content">
-            <div id="load" class="load">
-                <svg viewBox="0 0 32 32" width="32" height="32">
-                    <circle id="spinner" cx="16" cy="16" r="14" fill="none"></circle>
-                </svg>
-            </div>
-            <table id="node-children" >
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Tipo</th>
-                        <th>Contenido</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
+        <div id="folder-browser"></div>
     </div>
     <script type="text/javascript" src="../js/modules/site.js"></script>
     <script type="text/javascript" src="../js/modules/nodes.js"></script>
@@ -51,20 +32,28 @@
     <script type="text/javascript" src="../js/core/model/_mOTConfig.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="../js/modules/csui-loader.js"></script>
     <script type="text/javascript">
-        let complete = infoNode(2000);
         
-        
-
-        $('#node-children')
-        .addClass( 'nowrap' )
-        .dataTable( {
-            processing: true,
-            responsive: true,
-            columnDefs: [
-            { targets: [-1, -3], className: 'dt-body-right' }
-            ]
-        } );
+        csui.initialize(function () {
+            'use strict';
+            
+            csui.authenticate(function (connection) {
+                
+                csui.onReady2([
+                'csui/integration/folderbrowser/folderbrowser.widget',
+                'csui/lib/domReady!'
+                ], function (FolderBrowserWidget) {
+                    var folderBrowser = new FolderBrowserWidget({
+                        connection: connection,
+                        start: {id: 2000}
+                    });
+                    folderBrowser.show({placeholder: '#folder-browser'});
+                });
+                
+            });
+            
+        });
         
     </script>
 </body>
